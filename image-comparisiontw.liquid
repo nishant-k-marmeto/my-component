@@ -1,0 +1,17 @@
+<div class="page-width custom_margin-{{ section.id }}">
+  <div class="relative w-full max-w-[700px] mx-auto aspect-[70/45] overflow-hidden select-none" id="sliderWrapper">
+    {% if section.settings.image_1 != blank %}
+        {% render 'image-snippet', class: 'absolute w-full h-full object-cover', mobileSrc: section.settings.image_1_mobile, desktopSrc: section.settings.image_1 %}
+      {% else %}
+        {{ 'lifestyle-2' | placeholder_svg_tag }}
+      {% endif %}
+    <div id="sliderImageWrapper" class="relative w-full max-w-[700px] mx-auto aspect-[70/45] overflow-hidden select-none" style="clip-path: inset(0 50% 0 0);">
+        {% if section.settings.image_2 != blank %}
+            {% render 'image-snippet', class: 'absolute w-full h-full object-cover', mobileSrc: section.settings.image_2_mobile, desktopSrc: section.settings.image_2 %}
+          {% else %}
+            {{ 'collection-1' | placeholder_svg_tag }}
+          {% endif %}
+    </div>
+    <div id="sliderHandle" class="absolute top-0 bottom-0 w-[2px] bg-white cursor-ew-resize before:absolute before:top-1/2 before:left-[-4px] before:w-[10px] before:h-[10px] before:bg-white before:rounded-full before:transform before:-translate-y-1/2" style="left: 50%;"><p style="display: none;">Nishant K Tiwary</p></div>
+  </div>
+</div>
