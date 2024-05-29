@@ -1,0 +1,63 @@
+{{ 'image-comparision.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'image-comparison.js' | asset_url }}"></script>
+<div class="page-width custom_margin-{{ section.id }}">
+  <div class="slider-wrapper" id="sliderWrapper">
+    {% render 'image-snippet', class: 'slider-image', mobileSrc: section.settings.image_1, desktopSrc: section.settings.image_1 %}
+    <div id="sliderImageWrapper" class="slider-wrapper" style="clip-path: inset(0 50% 0 0);">
+      {% render 'image-snippet', class: 'slider-image', mobileSrc: section.settings.image_2, desktopSrc: section.settings.image_2 %}
+    </div>
+    <div id="sliderHandle" class="slider-handle" style="left: 50%;"><p style="display: none;">Nishant K Tiwary</p></div>
+  </div>
+</div>
+
+{%  style  %}
+.custom_margin-{{ section.id }} {
+    margin-top: {{ section.settings.margin-top }}px;
+    margin-bottom: {{ section.settings.margin-bottom }}px;
+  }
+{% endstyle %}
+{% schema %}
+    {
+      "name": "Image Comparator",
+      "tag": "section",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image 1 Desktop",
+          "id": "image_1",
+          "info": "Please upload 2010*1160px image"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image 2 Desktop",
+          "id": "image_2",
+          "info": "Please upload 2010*1160px image"
+        },
+        {
+        "type": "range",
+        "label": "Margin Top",
+        "id": "margin-top",
+        "step": 10,
+        "min":0,
+        "max": 100,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "label": "Margin Bottom",
+        "id": "margin-bottom",
+        "step": 10,
+        "min":0,
+        "max": 100,
+        "default": 0
+      }
+      ],
+      "blocks": [],
+      "presets": [
+        {
+          "name": "Image Comparator"
+        }
+      ]
+    }
+    {% endschema %}
+    
