@@ -2,9 +2,17 @@
 <script src="{{ 'image-comparison.js' | asset_url }}"></script>
 <div class="page-width custom_margin-{{ section.id }}">
   <div class="slider-wrapper" id="sliderWrapper">
-    {% render 'image-snippet', class: 'slider-image', mobileSrc: section.settings.image_1, desktopSrc: section.settings.image_1 %}
+    {% if section.settings.image_1 != blank %}
+        {% render 'image-snippet', class: 'slider-image', mobileSrc: section.settings.image_1_mobile, desktopSrc: section.settings.image_1 %}
+      {% else %}
+        {{ 'lifestyle-2' | placeholder_svg_tag }}
+      {% endif %}
     <div id="sliderImageWrapper" class="slider-wrapper" style="clip-path: inset(0 50% 0 0);">
-      {% render 'image-snippet', class: 'slider-image', mobileSrc: section.settings.image_2, desktopSrc: section.settings.image_2 %}
+        {% if section.settings.image_2 != blank %}
+            {% render 'image-snippet', class: 'slider-image', mobileSrc: section.settings.image_2_mobile, desktopSrc: section.settings.image_2 %}
+          {% else %}
+            {{ 'collection-1' | placeholder_svg_tag }}
+          {% endif %}
     </div>
     <div id="sliderHandle" class="slider-handle" style="left: 50%;"><p style="display: none;">Nishant K Tiwary</p></div>
   </div>
@@ -24,14 +32,26 @@
         {
           "type": "image_picker",
           "label": "Image 1 Desktop",
-          "id": "image_1",
+          "id": "image_1_desktop",
           "info": "Please upload 2010*1160px image"
         },
         {
           "type": "image_picker",
+          "label": "Image 1 Mobile",
+          "id": "image_1_mobile",
+          "info": "Please upload 600*600px image"
+        },
+        {
+          "type": "image_picker",
           "label": "Image 2 Desktop",
-          "id": "image_2",
+          "id": "image_2_desktop",
           "info": "Please upload 2010*1160px image"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image 2 Mobile",
+          "id": "image_2_mobile",
+          "info": "Please upload 600*600px image"
         },
         {
         "type": "range",
